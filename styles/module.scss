@@ -15,7 +15,8 @@
     flex-direction: column;
 }
 
-.task-form-group {
+.task-form-group,
+.task-header {
     display: flex;
     justify-content: space-between;
 }

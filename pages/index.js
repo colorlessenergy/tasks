@@ -16,6 +16,15 @@ export default function Home() {
     }, []);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    useEffect(() => {
+        if (isModalOpen === false) {
+            setTasks(JSON.parse(localStorage.getItem('tasks')));
+            setEditTask(false);
+            setEditTaskIndex(null);
+        }
+    }, [isModalOpen]);
+
     const toggleModal = () => {
         setIsModalOpen(previousIsModalOpen => !previousIsModalOpen);
     };
@@ -27,6 +36,14 @@ export default function Home() {
 
         setTasks(cloneTasks);
         localStorage.setItem('tasks', JSON.stringify(cloneTasks));
+    };
+
+    const [editTask, setEditTask] = useState(false);
+    const [editTaskIndex, setEditTaskIndex] = useState(null);
+    const handleEditTask = (task, index) => {
+        setEditTask(task);
+        setEditTaskIndex(index);
+        toggleModal();
     };
 
     return (
@@ -47,7 +64,22 @@ export default function Home() {
                                 key={index}
                                 className="task mb-1 p-1"
                                 style={{ backgroundColor: `#${task.color}` }}>
-                                <p>{task.task}</p>
+                                <div className="task-header">
+                                    <p>{task.task}</p>
+
+                                    <button
+                                        onClick={() =>
+                                            handleEditTask(task, index)
+                                        }>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            width="24"
+                                            height="24">
+                                            <path d="M15.728 9.686l-1.414-1.414L5 17.586V19h1.414l9.314-9.314zm1.414-1.414l1.414-1.414-1.414-1.414-1.414 1.414 1.414 1.414zM7.242 21H3v-4.243L16.435 3.322a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414L7.243 21z" />
+                                        </svg>
+                                    </button>
+                                </div>
 
                                 <div className="mt-1">
                                     {task.list.map((item, itemIndex) => {
@@ -88,7 +120,11 @@ export default function Home() {
 
                 {isModalOpen ? (
                     <Modal isOpen={isModalOpen}>
-                        <AddTask toggleModal={toggleModal} />
+                        <AddTask
+                            editTask={editTask}
+                            editTaskIndex={editTaskIndex}
+                            toggleModal={toggleModal}
+                        />
                     </Modal>
                 ) : null}
             </div>

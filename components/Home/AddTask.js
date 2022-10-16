@@ -59,21 +59,24 @@ const reducer = (state, action) => {
     }
 };
 
-const AddTask = ({ toggleModal }) => {
-    const [state, dispatch] = useReducer(reducer, {
-        task: '',
-        color: 'F0FBFF',
-        list: [
-            {
-                task: '',
-                isDone: false
-            },
-            {
-                task: '',
-                isDone: false
-            }
-        ]
-    });
+const AddTask = ({ editTask, editTaskIndex, toggleModal }) => {
+    const [state, dispatch] = useReducer(
+        reducer,
+        editTask || {
+            task: '',
+            color: 'F0FBFF',
+            list: [
+                {
+                    task: '',
+                    isDone: false
+                },
+                {
+                    task: '',
+                    isDone: false
+                }
+            ]
+        }
+    );
 
     const [formValidation, setFormValidation] = useState({});
     const handleSubmit = event => {
@@ -106,9 +109,15 @@ const AddTask = ({ toggleModal }) => {
             };
         });
 
-        let tasks = JSON.parse(localStorage.getItem('tasks'));
-        tasks.push(cloneState);
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        if (editTask) {
+            let tasks = JSON.parse(localStorage.getItem('tasks'));
+            tasks[editTaskIndex] = state;
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        } else {
+            let tasks = JSON.parse(localStorage.getItem('tasks'));
+            tasks.push(cloneState);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
 
         toggleModal();
     };
@@ -137,7 +146,9 @@ const AddTask = ({ toggleModal }) => {
                     cancel
                 </button>
 
-                <button className="underline">add</button>
+                <button className="underline">
+                    {editTask ? 'edit' : 'add'}
+                </button>
             </div>
         </form>
     );
