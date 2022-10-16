@@ -16,6 +16,10 @@
     margin-bottom: $space-1;
 }
 
+.ml-3 {
+    margin-left: $space-3;
+}
+
 .d-flex {
     display: flex;
 }
@@ -38,4 +42,8 @@
 
 .underline {
     text-decoration: underline;
+}
+
+.color-red {
+    color: $red;
 }

@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 
 const COLORS = ['F0FBFF', 'F5F0FF', 'FFF0FA'];
 
@@ -60,7 +60,7 @@ const reducer = (state, action) => {
 const AddTask = ({ toggleModal }) => {
     const [state, dispatch] = useReducer(reducer, {
         task: '',
-        color: '',
+        color: 'F0FBFF',
         list: [
             {
                 task: '',
@@ -97,8 +97,27 @@ const AddTask = ({ toggleModal }) => {
         toggleModal();
     };
 
+    const [formValidation, setFormValidation] = useState({});
     const handleSubmit = event => {
         event.preventDefault();
+
+        let currentFormValidation = {};
+
+        if (state.task.trim() === '') {
+            currentFormValidation.task = 'task missing';
+        }
+
+        const missingListItem = state.list.map(item => {
+            return item.task.trim() === '';
+        });
+
+        if (missingListItem.includes(true)) {
+            currentFormValidation.listItem = missingListItem;
+        }
+
+        if (currentFormValidation.task || currentFormValidation.listItem) {
+            return setFormValidation(currentFormValidation);
+        }
 
         let tasks = JSON.parse(localStorage.getItem('tasks'));
         tasks.push(state);
@@ -118,13 +137,18 @@ const AddTask = ({ toggleModal }) => {
                 name="task"
                 id="task"></textarea>
 
+            {formValidation.task ? (
+                <div className="color-red">{formValidation.task}</div>
+            ) : null}
+
             <div className="fw-700 mt-1">color</div>
             <div className="d-flex">
                 {COLORS.map(color => {
                     return (
                         <div key={color} className="mr-1">
                             <input
-                                onClick={() => selectColor(color)}
+                                onChange={() => selectColor(color)}
+                                checked={state.color === color}
                                 type="radio"
                                 id={`color-${color}`}
                                 value={`color-${color}`}
@@ -158,30 +182,39 @@ const AddTask = ({ toggleModal }) => {
             <div className="task-form-list">
                 {state.list.map((item, index) => {
                     return (
-                        <div className="d-flex mb-1" key={index}>
-                            <button
-                                onClick={() => removeListItem(index)}
-                                type="button">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    width="24"
-                                    height="24">
-                                    <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" />
-                                </svg>
-                            </button>
+                        <div key={index} className="mb-1">
+                            <div className="d-flex">
+                                <button
+                                    onClick={() => removeListItem(index)}
+                                    type="button">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="24"
+                                        height="24">
+                                        <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" />
+                                    </svg>
+                                </button>
 
-                            <input
-                                type="text"
-                                className="flex-1"
-                                onChange={event =>
-                                    changeListItem({
-                                        listItemIndex: index,
-                                        text: event.currentTarget.value
-                                    })
-                                }
-                                value={item.task}
-                            />
+                                <input
+                                    type="text"
+                                    className="flex-1"
+                                    onChange={event =>
+                                        changeListItem({
+                                            listItemIndex: index,
+                                            text: event.currentTarget.value
+                                        })
+                                    }
+                                    value={item.task}
+                                />
+                            </div>
+
+                            {formValidation.listItem &&
+                            formValidation.listItem[index] ? (
+                                <div className="ml-3 color-red">
+                                    missing task item
+                                </div>
+                            ) : null}
                         </div>
                     );
                 })}
