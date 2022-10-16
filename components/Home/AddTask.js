@@ -99,7 +99,7 @@ const AddTask = ({ toggleModal }) => {
     };
 
     const addListItem = () => {
-        dispatch({ type: 'ADD_LIST_ITEM', list: cloneList });
+        dispatch({ type: 'ADD_LIST_ITEM' });
     };
 
     const changeListItem = ({ listItemIndex, text }) => {
@@ -116,8 +116,18 @@ const AddTask = ({ toggleModal }) => {
         toggleModal();
     };
 
+    const handleSubmit = event => {
+        event.preventDefault();
+
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
+        tasks.push(state);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+
+        toggleModal();
+    };
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <label htmlFor="task">task</label>
             <textarea
                 onChange={handleTaskChange}

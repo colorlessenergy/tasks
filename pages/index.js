@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 
 import Nav from '../components/Nav';
@@ -6,6 +6,12 @@ import Modal from '../components/Modal/Modal';
 import AddTask from '../components/Home/AddTask';
 
 export default function Home() {
+    useEffect(() => {
+        if (!localStorage.getItem('tasks')) {
+            localStorage.setItem('tasks', JSON.stringify([]));
+        }
+    }, []);
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => {
         setIsModalOpen(previousIsModalOpen => !previousIsModalOpen);
