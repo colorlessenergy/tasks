@@ -111,7 +111,7 @@ const TaskForm = ({ editTask, editTaskIndex, toggleModal }) => {
 
         if (editTask) {
             let tasks = JSON.parse(localStorage.getItem('tasks'));
-            tasks[editTaskIndex] = state;
+            tasks[editTaskIndex] = cloneState;
             localStorage.setItem('tasks', JSON.stringify(tasks));
         } else {
             let tasks = JSON.parse(localStorage.getItem('tasks'));
