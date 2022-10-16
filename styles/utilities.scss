@@ -1,0 +1,9 @@
+@use 'variables.scss' as *;
+
+.mr-1 {
+    margin-right: $space-1;
+}
+
+.d-flex {
+    display: flex;
+}

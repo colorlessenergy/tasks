@@ -2,7 +2,13 @@
 
 .nav {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
 }
 
 .container {
