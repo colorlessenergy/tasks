@@ -28,9 +28,11 @@ export default function Home() {
             <div className="container">
                 <Nav toggleModal={toggleModal} />
 
-                <Modal isOpen={isModalOpen} toggleModal={toggleModal}>
-                    <AddTask toggleModal={toggleModal} />
-                </Modal>
+                {isModalOpen ? (
+                    <Modal isOpen={isModalOpen} toggleModal={toggleModal}>
+                        <AddTask toggleModal={toggleModal} />
+                    </Modal>
+                ) : null}
             </div>
         </div>
     );

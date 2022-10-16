@@ -51,23 +51,6 @@ const reducer = (state, action) => {
             };
         }
 
-        case 'RESET': {
-            return {
-                task: '',
-                color: '',
-                list: [
-                    {
-                        task: '',
-                        isDone: false
-                    },
-                    {
-                        task: '',
-                        isDone: false
-                    }
-                ]
-            };
-        }
-
         default: {
             throw Error('Unknown action: ' + action.type);
         }
@@ -111,8 +94,6 @@ const AddTask = ({ toggleModal }) => {
     };
 
     const handleCancel = () => {
-        dispatch({ type: 'RESET' });
-
         toggleModal();
     };
 
