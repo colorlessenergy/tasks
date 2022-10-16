@@ -119,8 +119,17 @@ const AddTask = ({ toggleModal }) => {
             return setFormValidation(currentFormValidation);
         }
 
+        let cloneState = JSON.parse(JSON.stringify(state));
+        cloneState.task = cloneState.task.trim();
+        cloneState.list = cloneState.list.map(item => {
+            return {
+                ...item,
+                task: item.task.trim()
+            };
+        });
+
         let tasks = JSON.parse(localStorage.getItem('tasks'));
-        tasks.push(state);
+        tasks.push(cloneState);
         localStorage.setItem('tasks', JSON.stringify(tasks));
 
         toggleModal();
