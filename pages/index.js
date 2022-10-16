@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import Head from 'next/head';
 
 import Nav from '../components/Nav';
+import Modal from '../components/Modal/Modal';
 
 export default function Home() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const toggleModal = () => {
+        setIsModalOpen(previousIsModalOpen => !previousIsModalOpen);
+    };
+
     return (
         <div>
             <Head>
@@ -12,7 +19,9 @@ export default function Home() {
             </Head>
 
             <div className="container">
-                <Nav />
+                <Nav toggleModal={toggleModal} />
+
+                <Modal isOpen={isModalOpen} toggleModal={toggleModal}></Modal>
             </div>
         </div>
     );
