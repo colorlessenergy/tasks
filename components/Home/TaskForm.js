@@ -59,7 +59,7 @@ const reducer = (state, action) => {
     }
 };
 
-const AddTask = ({ editTask, editTaskIndex, toggleModal }) => {
+const TaskForm = ({ editTask, editTaskIndex, toggleModal }) => {
     const [state, dispatch] = useReducer(
         reducer,
         editTask || {
@@ -154,4 +154,4 @@ const AddTask = ({ editTask, editTaskIndex, toggleModal }) => {
     );
 };
 
-export default AddTask;
+export default TaskForm;

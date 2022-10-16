@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import Nav from '../components/Nav';
 import Modal from '../components/Modal/Modal';
-import AddTask from '../components/Home/AddTask';
+import TaskForm from '../components/Home/TaskForm';
 
 export default function Home() {
     const [tasks, setTasks] = useState([]);
@@ -120,7 +120,7 @@ export default function Home() {
 
                 {isModalOpen ? (
                     <Modal isOpen={isModalOpen}>
-                        <AddTask
+                        <TaskForm
                             editTask={editTask}
                             editTaskIndex={editTaskIndex}
                             toggleModal={toggleModal}
