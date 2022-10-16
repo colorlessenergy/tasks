@@ -1,13 +1,13 @@
 @use './variables.scss' as *;
 
+.container {
+    margin: $space-1;
+}
+
 .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.container {
-    margin: $space-1;
 }
 
 @media (min-width: 1000px) {
