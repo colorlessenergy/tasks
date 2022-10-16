@@ -1,4 +1,17 @@
+@use './variables.scss' as *;
+
 .nav {
     display: flex;
     justify-content: space-between;
+}
+
+.container {
+    margin: $space-1;
+}
+
+@media (min-width: 1000px) {
+    .container {
+        margin: $space-1 auto;
+        max-width: 1000px;
+    }
 }
