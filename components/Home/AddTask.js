@@ -51,13 +51,30 @@ const reducer = (state, action) => {
             };
         }
 
+        case 'RESET': {
+            return {
+                task: '',
+                color: '',
+                list: [
+                    {
+                        task: '',
+                        isDone: false
+                    },
+                    {
+                        task: '',
+                        isDone: false
+                    }
+                ]
+            };
+        }
+
         default: {
             throw Error('Unknown action: ' + action.type);
         }
     }
 };
 
-const AddTask = () => {
+const AddTask = ({ toggleModal }) => {
     const [state, dispatch] = useReducer(reducer, {
         task: '',
         color: '',
@@ -91,6 +108,12 @@ const AddTask = () => {
 
     const removeListItem = listItemIndex => {
         dispatch({ type: 'REMOVE_LIST_ITEM', listItemIndex });
+    };
+
+    const handleCancel = () => {
+        dispatch({ type: 'RESET' });
+
+        toggleModal();
     };
 
     return (
@@ -164,6 +187,14 @@ const AddTask = () => {
                         </div>
                     );
                 })}
+            </div>
+
+            <div>
+                <button type="button" onClick={handleCancel}>
+                    cancel
+                </button>
+
+                <button>add</button>
             </div>
         </form>
     );
