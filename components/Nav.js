@@ -1,6 +1,6 @@
 const Nav = ({ toggleModal }) => {
     return (
-        <nav className="nav">
+        <nav className="nav mb-1">
             <div>tasks</div>
 
             <div className="d-flex">

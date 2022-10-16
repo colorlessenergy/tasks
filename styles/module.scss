@@ -27,6 +27,7 @@
     height: 20px;
     width: 20px;
 
+    background-color: #ffffff;
     cursor: pointer;
 }
 
@@ -39,9 +40,40 @@ input[type='radio']:checked + .circle {
     overflow-y: scroll;
 }
 
+input[type='checkbox']:checked + .circle.F0FBFF {
+    background-color: #06afed;
+}
+
+input[type='checkbox']:checked + .circle.F5F0FF {
+    background-color: #4001be;
+}
+
+input[type='checkbox']:checked + .circle.FFF0FA {
+    background-color: #c10080;
+}
+
+.task-list-item {
+    display: flex;
+    align-items: center;
+}
+
+.tasks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.task {
+    width: 100%;
+}
+
 @media (min-width: 1000px) {
     .container {
         margin: $space-1 auto;
         max-width: 1000px;
+    }
+
+    .task {
+        width: 49%;
     }
 }
