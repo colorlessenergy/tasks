@@ -108,35 +108,41 @@ const AddTask = ({ toggleModal }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="task">task</label>
+        <form className="task-form" onSubmit={handleSubmit}>
+            <label className="fw-700" htmlFor="task">
+                task
+            </label>
             <textarea
                 onChange={handleTaskChange}
                 value={state.task}
                 name="task"
                 id="task"></textarea>
 
-            {COLORS.map(color => {
-                return (
-                    <div key={color}>
-                        <label
-                            className={`circle circle-${color}`}
-                            htmlFor={`color-${color}`}>
-                            {color}
-                        </label>
-                        <input
-                            onClick={() => selectColor(color)}
-                            type="radio"
-                            id={`color-${color}`}
-                            value={`color-${color}`}
-                            name="colors"
-                        />
-                    </div>
-                );
-            })}
+            <div className="fw-700 mt-1">color</div>
+            <div className="d-flex">
+                {COLORS.map(color => {
+                    return (
+                        <div key={color} className="mr-1">
+                            <input
+                                onClick={() => selectColor(color)}
+                                type="radio"
+                                id={`color-${color}`}
+                                value={`color-${color}`}
+                                name="colors"
+                                className="d-none"
+                            />
 
-            <div>
-                <div>list</div>
+                            <label
+                                className="circle"
+                                style={{ backgroundColor: `#${color}` }}
+                                htmlFor={`color-${color}`}></label>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <div className="mt-1 task-form-group">
+                <div className="fw-700">list</div>
 
                 <button onClick={addListItem} type="button">
                     <svg
@@ -149,10 +155,10 @@ const AddTask = ({ toggleModal }) => {
                 </button>
             </div>
 
-            <div>
+            <div className="task-form-list">
                 {state.list.map((item, index) => {
                     return (
-                        <div key={index}>
+                        <div className="d-flex mb-1" key={index}>
                             <button
                                 onClick={() => removeListItem(index)}
                                 type="button">
@@ -167,6 +173,7 @@ const AddTask = ({ toggleModal }) => {
 
                             <input
                                 type="text"
+                                className="flex-1"
                                 onChange={event =>
                                     changeListItem({
                                         listItemIndex: index,
@@ -180,12 +187,15 @@ const AddTask = ({ toggleModal }) => {
                 })}
             </div>
 
-            <div>
-                <button type="button" onClick={handleCancel}>
+            <div className="mt-2 task-form-group">
+                <button
+                    className="underline"
+                    type="button"
+                    onClick={handleCancel}>
                     cancel
                 </button>
 
-                <button>add</button>
+                <button className="underline">add</button>
             </div>
         </form>
     );

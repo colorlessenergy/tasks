@@ -10,6 +10,35 @@
     justify-content: space-between;
 }
 
+.task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-form-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.circle {
+    border: 1px solid #000000;
+    border-radius: 50%;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+
+    cursor: pointer;
+}
+
+input[type='radio']:checked + .circle {
+    border-width: 2px;
+}
+
+.task-form-list {
+    max-height: 150px;
+    overflow-y: scroll;
+}
+
 @media (min-width: 1000px) {
     .container {
         margin: $space-1 auto;

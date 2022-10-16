@@ -1,11 +1,27 @@
 @use 'variables.scss' as *;
 
+.mt-1 {
+    margin-top: $space-1;
+}
+
+.mt-2 {
+    margin-top: $space-2;
+}
+
 .mr-1 {
     margin-right: $space-1;
 }
 
+.mb-1 {
+    margin-bottom: $space-1;
+}
+
 .d-flex {
     display: flex;
+}
+
+.flex-1 {
+    flex: 1 1 auto;
 }
 
 .d-none {
@@ -14,4 +30,12 @@
 
 .overflow-hidden {
     overflow: hidden;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.underline {
+    text-decoration: underline;
 }
