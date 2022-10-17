@@ -122,7 +122,9 @@ export default function Home() {
                                 <div className="mt-1">
                                     {task.list.map((item, itemIndex) => {
                                         return (
-                                            <div className="task-list-item">
+                                            <div
+                                                key={itemIndex}
+                                                className="task-list-item">
                                                 <input
                                                     onChange={() =>
                                                         handleTaskDone({
