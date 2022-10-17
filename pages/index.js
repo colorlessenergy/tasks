@@ -105,7 +105,11 @@ export default function Home() {
                                                     htmlFor={`${index}-${item.task}`}></label>
 
                                                 <label
-                                                    className="cursor-pointer"
+                                                    className={`cursor-pointer ${
+                                                        item.isDone
+                                                            ? 'line-through'
+                                                            : ''
+                                                    }`}
                                                     htmlFor={`${index}-${item.task}`}>
                                                     {item.task}
                                                 </label>
