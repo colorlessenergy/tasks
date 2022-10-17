@@ -85,7 +85,7 @@ export default function Home() {
                         return (
                             <div
                                 key={index}
-                                className="task mb-1 p-1"
+                                className="task mb-1"
                                 style={{ backgroundColor: `#${task.color}` }}>
                                 <div className="task-header">
                                     <p>{task.task}</p>
