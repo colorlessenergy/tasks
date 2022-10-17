@@ -24,6 +24,11 @@
     overflow: hidden;
 }
 
+:global(.dark) .modal-content {
+    background-color: #222222;
+    color: #ffffff;
+}
+
 @media (min-width: 600px) {
     .modal-content {
         width: 60%;
