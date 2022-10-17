@@ -135,14 +135,14 @@ export default function Home() {
                                                     }
                                                     checked={item.isDone}
                                                     type="checkbox"
-                                                    id={`${index}-${item.task}`}
-                                                    name={`${index}-${item.task}`}
+                                                    id={`${index}-${itemIndex}`}
+                                                    name={`${index}-${itemIndex}`}
                                                     className="d-none"
                                                 />
 
                                                 <label
                                                     className={`circle ${task.color} mr-1`}
-                                                    htmlFor={`${index}-${item.task}`}></label>
+                                                    htmlFor={`${index}-${itemIndex}`}></label>
 
                                                 <label
                                                     className={`cursor-pointer ${
@@ -150,7 +150,7 @@ export default function Home() {
                                                             ? 'line-through'
                                                             : ''
                                                     }`}
-                                                    htmlFor={`${index}-${item.task}`}>
+                                                    htmlFor={`${index}-${itemIndex}`}>
                                                     {item.task}
                                                 </label>
                                             </div>
