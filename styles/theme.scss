@@ -10,6 +10,11 @@
     border-color: #ffffff;
 }
 
+.dark input,
+.dark textarea {
+    outline-color: #ffa500;
+}
+
 .dark .task-form button {
     color: #ffffff;
 }
