@@ -41,15 +41,15 @@ input[type='radio']:checked + .circle {
     overflow-y: scroll;
 }
 
-input[type='checkbox']:checked + .circle.F0FBFF {
+input[type='checkbox']:checked + .circle.d7f5ff {
     background-color: #06afed;
 }
 
-input[type='checkbox']:checked + .circle.F5F0FF {
+input[type='checkbox']:checked + .circle.efe7ff {
     background-color: #4001be;
 }
 
-input[type='checkbox']:checked + .circle.FFF0FA {
+input[type='checkbox']:checked + .circle.ffdcf3 {
     background-color: #c10080;
 }
 
@@ -65,6 +65,7 @@ input[type='checkbox']:checked + .circle.FFF0FA {
 }
 
 .task {
+    border-radius: 5px;
     padding: $space-1 $space-1 $space-2 $space-1;
     width: 100%;
 

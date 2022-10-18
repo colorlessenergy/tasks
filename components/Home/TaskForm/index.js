@@ -64,7 +64,7 @@ const TaskForm = ({ editTask, editTaskIndex, toggleModal }) => {
         reducer,
         editTask || {
             task: '',
-            color: 'F0FBFF',
+            color: 'd7f5ff',
             list: [
                 {
                     task: '',

@@ -1,4 +1,4 @@
-const COLORS = ['F0FBFF', 'F5F0FF', 'FFF0FA'];
+const COLORS = ['d7f5ff', 'efe7ff', 'ffdcf3'];
 
 const Color = ({ state, dispatch }) => {
     const selectColor = color => {
