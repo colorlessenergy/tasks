@@ -88,7 +88,7 @@ export default function Home() {
                                 className="task mb-1"
                                 style={{ backgroundColor: `#${task.color}` }}>
                                 <div className="task-header">
-                                    <p>{task.task}</p>
+                                    <p className="fw-700">{task.task}</p>
 
                                     {areAllTaskDone ? (
                                         <button
