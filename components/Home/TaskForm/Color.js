@@ -7,7 +7,7 @@ const Color = ({ state, dispatch }) => {
 
     return (
         <>
-            <div className="fw-700 mt-1">color</div>
+            <div className="fw-700 mt-1 mb-04">color</div>
             <div className="d-flex">
                 {COLORS.map(color => {
                     return (

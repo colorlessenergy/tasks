@@ -12,7 +12,7 @@ const Task = ({ state, dispatch, formValidation }) => {
 
     return (
         <>
-            <label className="fw-700" htmlFor="task">
+            <label className="fw-700 mb-04" htmlFor="task">
                 task
             </label>
             <textarea

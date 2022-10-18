@@ -12,7 +12,7 @@ const List = ({ state, dispatch, formValidation }) => {
     };
     return (
         <>
-            <div className="mt-1 task-form-group">
+            <div className="task-form-group mt-1 mb-04">
                 <div className="fw-700">list</div>
 
                 <button onClick={addListItem} type="button">
