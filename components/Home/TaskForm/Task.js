@@ -1,7 +1,14 @@
+import { useEffect, useRef } from 'react';
+
 const Task = ({ state, dispatch, formValidation }) => {
     const handleTaskChange = event => {
         dispatch({ type: 'CHANGE_TASK', task: event.currentTarget.value });
     };
+
+    const textareaRef = useRef();
+    useEffect(() => {
+        textareaRef.current.focus();
+    }, []);
 
     return (
         <>
@@ -11,6 +18,7 @@ const Task = ({ state, dispatch, formValidation }) => {
             <textarea
                 onChange={handleTaskChange}
                 value={state.task}
+                ref={textareaRef}
                 name="task"
                 id="task"></textarea>
 
