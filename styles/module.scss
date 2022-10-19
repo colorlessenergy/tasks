@@ -72,6 +72,13 @@ input[type='checkbox']:checked + .circle.ffdcf3 {
     color: #000000;
 }
 
+.task-button {
+    border-radius: 50%;
+    padding: 4px;
+
+    background-color: #ffffff;
+}
+
 @media (min-width: 1000px) {
     .container {
         margin: $space-1 auto;
