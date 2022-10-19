@@ -24,7 +24,7 @@ const reducer = (state, action) => {
             let cloneList = JSON.parse(JSON.stringify(state.list));
             cloneList.push({
                 task: '',
-                isDone: false
+                done: false
             });
 
             return {
@@ -68,11 +68,11 @@ const TaskForm = ({ editTask, editTaskIndex, toggleModal }) => {
             list: [
                 {
                     task: '',
-                    isDone: false
+                    done: false
                 },
                 {
                     task: '',
-                    isDone: false
+                    done: false
                 }
             ]
         }

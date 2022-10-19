@@ -36,7 +36,7 @@ export default function Home() {
     const handleTaskDone = ({ taskIndex, taskItemIndex }) => {
         let cloneTasks = JSON.parse(localStorage.getItem('tasks'));
         let taskItem = cloneTasks[taskIndex].list[taskItemIndex];
-        taskItem.isDone = !taskItem.isDone;
+        taskItem.done = !taskItem.done;
 
         setTasks(cloneTasks);
         localStorage.setItem('tasks', JSON.stringify(cloneTasks));
@@ -78,7 +78,7 @@ export default function Home() {
                     {tasks.map((task, index) => {
                         const areAllTaskDone = !task.list
                             .map(item => {
-                                return item.isDone;
+                                return item.done;
                             })
                             .includes(false);
 
@@ -133,7 +133,7 @@ export default function Home() {
                                                                 itemIndex
                                                         })
                                                     }
-                                                    checked={item.isDone}
+                                                    checked={item.done}
                                                     type="checkbox"
                                                     id={`${index}-${itemIndex}`}
                                                     name={`${index}-${itemIndex}`}
@@ -146,7 +146,7 @@ export default function Home() {
 
                                                 <label
                                                     className={`cursor-pointer ${
-                                                        item.isDone
+                                                        item.done
                                                             ? 'line-through'
                                                             : ''
                                                     }`}
