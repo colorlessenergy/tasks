@@ -9,7 +9,29 @@ export default function Home() {
     const [tasks, setTasks] = useState([]);
     useEffect(() => {
         if (!localStorage.getItem('tasks')) {
-            localStorage.setItem('tasks', JSON.stringify([]));
+            localStorage.setItem(
+                'tasks',
+                JSON.stringify([
+                    {
+                        task: 'get groceries',
+                        color: 'd7f5ff',
+                        list: [
+                            {
+                                task: 'water',
+                                done: false
+                            },
+                            {
+                                task: 'bananas',
+                                done: false
+                            },
+                            {
+                                task: 'oranges',
+                                done: false
+                            }
+                        ]
+                    }
+                ])
+            );
         }
 
         if (!localStorage.getItem('archive')) {
