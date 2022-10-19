@@ -1,26 +1,5 @@
 @use './variables.scss' as *;
 
-.container {
-    margin: $space-1;
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.task-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.task-form-group,
-.task-header {
-    display: flex;
-    justify-content: space-between;
-}
-
 .circle {
     border: 1px solid #000000;
     border-radius: 50%;
@@ -51,17 +30,6 @@ input[type='checkbox']:checked + .circle.efe7ff {
 
 input[type='checkbox']:checked + .circle.ffdcf3 {
     background-color: #c10080;
-}
-
-.task-list-item {
-    display: flex;
-    align-items: center;
-}
-
-.tasks {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .task {
